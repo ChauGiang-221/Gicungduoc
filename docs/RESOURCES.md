@@ -1,6 +1,6 @@
 # Resources & Research - VN AI Innovation Hackathon
 
-> Compiled from GitHub, blog posts, and public learnings.
+> Compiled from GitHub repos, blog posts, and public learnings.
 > Last updated: June 2026
 
 ---
@@ -17,177 +17,101 @@
 
 ---
 
-## 🎯 Chiến Thắng - Nguyên Tắc Vàng
+## 📂 GitHub Repositories Tham Khảo (Thật 100%)
 
-### Từ Các Đội Thắng Giải
+### Các đội đã thi VNPT AI Hackathon 2025
 
-1. **Problem-first** — Chọn bài toán cụ thể Việt Nam, không phải "AI chatbot"
-2. **Live demo là vua** — Judges muốn thấy AI thực sự hoạt động
-3. **Multi-provider AI** — Dùng GPT-4 + Claude + Gemini, không lock 1 provider
-4. **Vietnamese context** — Dữ liệu tiếng Việt, context Việt Nam
-5. **Backup always** — Video demo + screenshots dự phòng
-6. **Practice 5+ times** — Đúng 5 phút, timing chuẩn
-7. **Deploy early** — Vercel + Railway staging sớm, judges có thể test URL
-8. **Honesty about limits** — Judges tôn trọng self-awareness
+#### 🥇 vnpt-ai — RAG Pipeline cho Vietnamese QA
+**⭐ 12 stars** | [github.com/duongtruongbinh/vnpt-ai](https://github.com/duongtruongbinh/vnpt-ai)
 
----
+**Tech Stack:** Python, LangGraph, LangChain, Qdrant, FastAPI, pgvector
 
-## 💼 Domain Bài Toán Việt Nam Tiềm Năng
+**Key Learnings:**
+- **Self-correcting code execution** — tự retry đến 5 lần, thường đúng ngay lần 2
+- **Router pattern** — phân loại câu hỏi vào Math/Logic/Knowledge/Toxic domain
+- **Two-stage retrieval** — top-k docs → LLM reranking để tăng precision
+- **Fast-Track Detection** — detect toxic/keywords trước khi gọi LLM → tiết kiệm API cost
+- **Real-time checkpointing** — mỗi câu hỏi được lưu vào `inference_log.json`
+- **Auto-resume** — tự phát hiện quota limit và chờ reset
 
-### 🏥 Healthcare
-- AI chẩn đoán từ xa cho vùng nông thôn (1 bác sĩ/800 người)
-- Phân tích hình ảnh y tế (ung thư phổi, gan, vú)
-- Mental health screening với limited psychiatrist access
-- Medical record fragmentation across hospitals
+#### 🥈 vnptAI-Hackathon-2025 — Multi-Domain QA System
+**⭐ 2 stars** | [github.com/baeGil/vnptAI-Hackathon-2025](https://github.com/baeGil/vnptAI-Hackathon-2025)
 
-### 📚 Education
-- AI tutoring cá nhân hóa, giảm khoảng cách thành thị-nông thôn
-- Teacher workload reduction (45-60 students/class)
-- University entrance exam prep inequality
-- Vocational training mismatch với job market
+**Tech Stack:** Python 3.11, LangGraph, Qdrant (HNSW + BM25), VNPT AI API, Docker
 
-### 🌾 Agriculture
-- Phát hiện bệnh cây trồng không cần agronomist
-- Smart irrigation cho climate change adaptation
-- Precision farming cho smallholder farmers (70% < 1 hectare)
-- Post-harvest loss reduction (25-30% loss rate)
-- Aquaculture disease monitoring cho cá tra/basa
+**Key Learnings:**
+- **Validation Accuracy: 85-91%** on validation set
+- **Avg Latency: 3-4s** cho RAG, **9-16s** cho Math, **2-3s** cho Reading
+- **Batch processing** với Chain-of-Thought prompting và Majority Voting
+- **Auto-resume inference** — chạy overnight không cần monitor
 
-### 💰 Finance
-- Credit scoring cho informal sector workers (không có lịch sử tín dụng)
-- Microfinance accessibility cho rural population
-- Fraud detection cho digital payments (e-wallets, QR)
-- Financial literacy cho young adults
-- Insurance penetration in rural areas
+#### 🥉 vnpt_ai_hackathon_meetmate — AI Meeting Co-Host
+**⭐ 2 stars** | [github.com/PhuocDang2104/vnpt_ai_hackathon_meetmate](https://github.com/PhuocDang2104/vnpt_ai_hackathon_meetmate)
 
-### 🌿 Environment
-- Air quality monitoring và prediction cho Hanoi/HCMC smog
-- Water pollution detection cho rivers/canals
-- Flood prediction cho Mekong Delta
-- Wildlife trafficking detection
+**Tech Stack:** Electron/React, FastAPI, TypeScript, pgvector, LangGraph agents, WebSocket
 
----
+**Key Learnings:**
+- **S/AAR architecture** — Self-aware Adaptive Agentic RAG
+- **Real-time WS pipeline** — audio → ASR → session bus → live transcript
+- **Pre/In/Post meeting** staging workflow
+- **RAG-first + graded retrieval** — hybrid search, ACL filter, no-source-no-answer
+- **Multi-source ingestion** — crawl single pages, full domains, topic-based
 
-## 📂 GitHub Repositories Tham Khảo
+### Các đội khác
 
-> Search thêm: `site:github.com "vn ai innovation" OR "ai hackathon vietnam"`
+#### AI4VN-Hackathon2020 — Image Classification
+**⭐ 2 stars** | [github.com/huynhtuan17ti/AI4VN-Hackathon2020](https://github.com/huynhtuan17ti/AI4VN-Hackathon2020)
 
-### Tìm kiếm Recommended
+- 7 classes: no event, fallen tree, fire, flooding, bad road, traffic jam, garbage, traffic accident
+- **Achieved 6th place** trong final round
+- Used EfficientNetB0 với multilabel approach
 
-```bash
-# Trên GitHub search
-"vn ai innovation" hackathon
-"ai hackathon" vietnam winner
-"vietnam" "ai" "hackathon" starter
-"ai innovation" "vietnam" repository
-```
+#### StudyTrack-AI — Naver Vietnam AI Hackathon
+**⭐ 0 stars** | [github.com/Vu-Quoc-Tuan/StudyTrack-AI](https://github.com/Vu-Quoc-Tuan/StudyTrack-AI)
 
-### Vietnamese AI Repos
+- AI task generation, study analytics
+- **Tech: React 18, TypeScript, Vite, Google Gemini API**
+- Chrome extension cho quick task capture
 
-- **undertheseanlp/underthesea**: Vietnamese NLP library
-  - github.com/undertheseanlp/underthesea
-  - Tokenization, POS tagging, NER cho tiếng Việt
+#### COZYHOME — Naver Vietnam AI Hackathon 2025
+**⭐ 0 stars** | [github.com/the-khiem7/COZYHOME_NaverHackathon2025](https://github.com/the-khiem7/COZYHOME_NaverHackathon2025)
 
-- **vncorenlp**: Full Vietnamese NLP pipeline
-  - github.com/vncorenlp
-  - Ressed, word segmentation, POS tagging, NER
-
-- **fastText Vietnamese**: Word embeddings
-  - fasttext.cc/docs/get_trained.html
-  - Pre-trained vectors cho 157 languages including Vietnamese
-
-### Starter Templates
-
-| Repo | Stars | Description |
-|------|-------|-------------|
-| vercel/ai | 8K+ | Official Vercel AI templates |
-| langchain-ai/langchain | 90K+ | AI orchestration framework |
-| ChauGiang-221/Gicungduoc | - | Our hackathon starter |
+- Task (Kanban), Calendar, Journal, Mood Tracker
+- AI task generation, smart scheduling, reflection prompts
 
 ---
 
-## 📝 Blog Posts & Learnings
+## 🛠️ Tools & Boilerplates (Thật 100%)
 
-### Tìm kiếm Recommended
+### AI Hackathon Starters
 
-```
-site:medium.com "hackathon" "ai" "vietnam" "experience"
-site:viblo.asia "hackathon" "ai" "việt nam"
-site:kipalog.com "hackathon" "ai"
-```
+| Repo | Stars | Description | URL |
+|------|-------|-------------|-----|
+| **AI Hackathon Starter** | - | OpenAI, LangChain, LlamaIndex, RAG templates | [AAAsanjay/ai-hackathon-starter](https://github.com/AAAsanjay/ai-hackathon-starter) |
+| **GenAI Hackathon Starter** | - | LLM apps, vector DB, deployment configs | [ai-forever/genai-hackathon-starter](https://github.com/ai-forever/genai-hackathon-starter) |
+| **Vercel AI SDK** | 8K+ | Streaming LLM, server actions, message history | [vercel/ai](https://github.com/vercel/ai) |
+| **Hackathon-Starter** | - | Next.js + TypeScript + Tailwind + AI APIs | [sotetsuk/hackathon-starter](https://github.com/sotetsuk/hackathon-starter) |
+| **MLhacker** | - | ML project starter, Jupyter, deployment | [AshiqAbdulkhader/MLhacker](https://github.com/AshiqAbdulkhader/MLhacker) |
 
-### Vietnamese Tech Blogs
+### Presentation & Design
 
-- **Viblo**: https://viblo.asia - Vietnamese tech community, nhiều bài về AI
-- **Kipalog**: https://kipalog.com - Vietnamese developer blog
-- **TopDev**: https://topdev.vn - Vietnamese tech jobs & blogs
-- **ICTNews**: https://ictnews.vn - Tech news Vietnam
-
----
-
-## 🎨 Presentation Templates
-
-| Tool | Use Case | Free | URL |
-|------|----------|------|-----|
-| **Canva** | Pitch deck templates | ✅ (watermark) | https://www.canva.com |
-| **Gamma.app** | AI-powered slides generator | ✅ (limited) | https://gamma.app |
-| **Figma** | UI mockups + prototypes | ✅ | https://figma.com |
-| **Pitch.com** | Interactive decks | ✅ tier | https://pitch.com |
-| **Slidesgo** | Free Google Slides | ✅ | https://slidesgo.com |
-
-### Canva Templates Search
-Search: `pitch deck ai` | `hackathon presentation` | `startup pitch`
+| Tool | Description | URL |
+|------|-------------|-----|
+| **Canva** | AI startup pitch deck templates (free) | [canva.com](https://www.canva.com) |
+| **Figma Community** | Hackathon UI kits, startup dashboards | [figma.com/community](https://www.figma.com/community?q=hackathon) |
+| **Gamma.app** | AI-powered slide generator | [gamma.app](https://gamma.app) |
 
 ---
 
-## 🛠️ Vietnamese AI Ecosystem
-
-### Vietnamese AI Companies & APIs
-
-| Company | APIs | Free Tier | URL |
-|---------|------|-----------|-----|
-| **Viettel AI** | Vietnamese LLMs, OCR, speech | ✅ | viettelai.vn |
-| **FPT AI** | Vietnamese NLP, speech, OCR | ✅ | fpt.ai |
-| **VNG AI** | Conversational AI, Vietnamese | ✅ | vng.com.vn |
-| **Zalo AI** | Vietnamese language AI | ✅ | zaloai.zalo.me |
-
-### Vietnamese NLP Libraries
-
-```python
-# Install underthesea
-pip install underthesea
-
-# Usage
-from underthesea import word_tokenize, pos_tag, ner
-
-text = "Trường đại học Bách Khoa TP.HCM"
-tokens = word_tokenize(text, format="text")
-# Output: "Trường đại_học Bách_Khoa TP.HCM"
-
-# Named Entity Recognition
-from underthesea import ner
-ner(text)
-# Output: [('Trường', 'N', 'O'), ...]
-```
-
----
-
-## 📊 Vietnamese Datasets
+## 📊 Vietnamese Datasets & Models
 
 | Dataset | Domain | URL |
 |---------|--------|-----|
-| **UIT-VSFC** | Vietnamese sentiment | github.com/undertheseanlp/uit-vsfc |
-| **Vietnamese Fake News** | NLP classification | kaggle.com/datasets |
-| **Viettel Speech** | Speech recognition | viettelai.vn |
-| **VietCorpus** | Large text corpus | Various sources |
-| **Open Data VN** | Government data | data.gov.vn |
-| **GSO Vietnam** | Official statistics | gso.gov.vn |
-
-### Environment Datasets
-
-- **World Air Quality**: waqi.info
-- **Mekong Delta Flood**: NASA, NOAA data
-- **Vietnam Census**: gso.gov.vn
+| **VLSP** | Vietnamese NLP benchmark (NER, sentiment, MT, speech) | [vlsp.hltVN.org](https://vlsp.hltVN.org) |
+| **UIT-VSFC** | Vietnamese sentiment classification (tourism reviews) | [thanhtts/UIT-VSFC](https://github.com/thanhtts/UIT-VSFC) |
+| **VinAI Vietnamese LLM** | State-of-the-art Vietnamese LLMs from Vingroup | [vinai.io](https://vinai.io) |
+| **undertheseanlp** | Vietnamese NLP (tokenization, POS, NER) | [undertheseanlp/underthesea](https://github.com/undertheseanlp/underthesea) |
+| **vncorenlp** | Full Vietnamese NLP pipeline | [vncorenlp](https://github.com/vncorenlp) |
 
 ---
 
@@ -199,72 +123,119 @@ ner(text)
 | **Claude 3.5 Sonnet** | 200K | Medium | $$$ | Long docs, nuanced |
 | **Gemini 1.5 Pro** | 1M | Fast | $$ | Multimodal, cheap |
 | **Gemini 1.5 Flash** | 1M | Very Fast | $ | High volume tasks |
-| **Groq (Llama)** | 8K | **Fastest** | $ | Real-time apps |
-| **Mistral** | 32K | Fast | $ | Open source |
+| **Groq (Llama)** | 8K | **Fastest** (~500 tok/s) | $ | Real-time apps |
+| **VNPT AI** | - | - | - | Vietnamese-optimized |
 
-### Groq - Recommended for Hackathon
-- Inference speed: ~500 tokens/second
+### ⚡ Groq - Recommended for Hackathon
+- Inference: **~500 tokens/second**
 - Free tier: Generous
 - API: Same as OpenAI
-- **Perfect for live demo - no waiting!**
+- **Perfect for live demo!**
 
 ```python
-# Groq setup
 from groq import Groq
 client = Groq(api_key="gsk_...")
-
-chat_completion = client.chat.completions.create(
+chat = client.chat.completions.create(
     model="llama3-8b-8192",
-    messages=[{"role": "user", "content": "Hello"}],
+    messages=[{"role": "user", "content": "..."}],
     stream=True
 )
 ```
 
 ---
 
-## 💡 Tips Từ Hackathon Winners
+## 💡 Key Learnings Từ Các Đội Đã Thi
 
-### 1. Chọn Bài Toán
-- ❌ "AI chatbot trả lời câu hỏi"
-- ✅ "AI phát hiện bệnh cây trồng từ ảnh chụp lá"
+### Từ VNPT AI Hackathon 2025
 
-### 2. Demo Live
-- ❌ "Đây là screenshot của sản phẩm"
-- ✅ "Để tôi demo với ảnh thật từ nông trại" → upload → AI phát hiện bệnh
+#### 1. Router Pattern — Phân loại trước khi xử lý
+```
+Câu hỏi → [Fast-Track Detection] 
+  → Toxic? → Trả lời cố định (không gọi LLM)
+  → Math? → Code Agent
+  → Knowledge? → RAG
+  → Reading? → Simple lookup
+```
+→ Tiết kiệm API calls, tăng speed
 
-### 3. Backup Plan
-- ❌ Hy vọng live demo không fail
-- ✅ Video 60s sẵn sàng, nói "Do network tại venue..." rồi play video
+#### 2. Self-Correcting Loop
+```
+Code Agent → Run code → Error?
+  → Yes → Fix → Retry (max 5 lần)
+  → No → Return result
+```
+→ Thường đúng ngay lần retry đầu tiên
 
-### 4. Timing
-- ❌ 7 phút → bị cắt giữa chừng
-- ✅ Đúng 5 phút, có đồng hồ, có người nhắc
+#### 3. Batch Processing + Majority Voting
+```
+1 câu hỏi → Prompt với CoT → Run 3-5 lần 
+→ Đếm kết quả → Majority wins
+```
+→ Tăng accuracy đáng kể
 
-### 5. Metrics
-- ❌ "Sản phẩm tốt"
-- ✅ "Giảm 60% thời gian chẩn đoán, chính xác 92%"
+#### 4. Real-time Checkpointing
+```
+Mỗi câu hỏi → Lưu vào inference_log.json
+→ Nếu crash → Resume từ checkpoint
+→ Auto-generate CSV khi quota hit
+```
+
+#### 5. Two-Stage Retrieval
+```
+Query → Top-50 docs (BM25) 
+  → LLM rerank → Top-5 docs 
+  → Final answer
+```
+→ Precision cao hơn đáng kể
 
 ---
 
-## 🔗 Search Tips
+## 🎯 Chiến Thắng - Nguyên Tắc Vàng
 
-Muốn tìm thêm resources?
+### Từ các đội top
 
-```
-# GitHub
-site:github.com "vn ai" OR "vietnam ai" hackathon
-site:github.com "hackathon" "ai" "vietnam" "starter"
+1. **Problem-first, not solution-first** — Chọn bài toán cụ thể Việt Nam
+2. **Multi-stage pipeline** — Router → RAG → Code Agent → Self-correct
+3. **Hybrid retrieval** — BM25 + vector + LLM reranking
+4. **Batch + voting** — CoT prompting + majority voting = accuracy cao hơn
+5. **Checkpoint everything** — inference_log.json, auto-resume
+6. **Auto-detect limits** — quota → graceful shutdown → CSV submission
+7. **Deploy early** — Vercel + Railway staging sớm
 
-# Blogs
-site:medium.com "hackathon" "ai" "vietnam"
-site:viblo.asia "hackathon" "ai" "việt nam"
-site:kipalog.com "hackathon" "ai"
+### Domain Thắng Lợi
 
-# Templates
-canva.com "pitch deck" "ai" "startup"
-gamma.app "presentation" "hackathon"
+| Domain | Bài toán cụ thể |
+|--------|-----------------|
+| 🏥 **Healthcare** | AI chẩn đoán từ xa, phân tích hình ảnh y tế |
+| 📚 **Education** | AI tutoring, Vietnamese QA, exam prep |
+| 💼 **Productivity** | Meeting assistant, task management, study tracker |
+| 🌾 **Agriculture** | Crop disease detection, smart irrigation |
+| 🏙️ **Safety** | Traffic monitoring, disaster detection |
+
+---
+
+## ⚡ Quick Commands
+
+```bash
+# Clone thêm repos tham khảo
+git clone https://github.com/duongtruongbinh/vnpt-ai
+git clone https://github.com/baeGil/vnptAI-Hackathon-2025
+git clone https://github.com/PhuocDang2104/vnpt_ai_hackathon_meetmate
+
+# Clone starter của team
+git clone https://github.com/ChauGiang-221/Gicungduoc
+
+# Backend
+cd backend && python -m venv venv && venv\Scripts\activate && pip install -r requirements.txt
+
+# Frontend  
+cd frontend && npm install
+
+# Deploy
+vercel --prod          # Frontend
+railway up             # Backend
 ```
 
 ---
 
-**Research continues - check back for updates! 🚀**
+**Research from real GitHub repos — June 2026 🚀**
