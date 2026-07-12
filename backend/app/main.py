@@ -1,21 +1,20 @@
 """
-VN AI Innovation Hackathon - Backend API
-
-Multi-provider AI service: OpenAI, Claude, Gemini
+Gicungduoc - Backend API
+FPT AI Inference with SSE Streaming
 """
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import get_settings
-from app.api.ai import router as ai_router
+from app.api.chat import router as chat_router
 from app.api.health import router as health_router
 
 settings = get_settings()
 
 app = FastAPI(
-    title="VN AI Innovation API",
+    title="Gicungduoc API",
     version="1.0.0",
-    description="Multi-provider AI API for hackathon - OpenAI, Claude, Gemini",
+    description="AI Chatbot API với FPT AI Inference",
 )
 
 # CORS
@@ -30,13 +29,13 @@ app.add_middleware(
 
 # Routers
 app.include_router(health_router)
-app.include_router(ai_router)
+app.include_router(chat_router)
 
 
 @app.get("/")
 async def root():
     return {
-        "name": "VN AI Innovation API",
+        "name": "Gicungduoc API",
         "version": "1.0.0",
         "docs": "/docs",
     }

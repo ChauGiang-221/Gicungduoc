@@ -6,26 +6,14 @@ pydantic-settings==2.7.1
 python-dotenv==1.0.1
 python-multipart==0.0.20
 
-# ===== AI / ML SDKs =====
+# ===== FPT AI Inference (OpenAI-compatible) =====
 openai==1.58.1
-anthropic==0.42.0
-google-generativeai==0.8.3
 
-# ===== AI Orchestration (optional) =====
-langchain==0.3.13
-langchain-openai==0.2.14
-langchain-anthropic==0.3.3
-langchain-google-genai==2.0.8
+# ===== HTTP =====
+httpx==0.28.1
 
 # ===== Database (Firebase Firestore) =====
 firebase-admin==6.6.0
-
-# ===== HTTP / Async =====
-httpx==0.28.1
-aiohttp==3.11.11
-
-# ===== Vietnamese NLP (optional) =====
-underthesea==6.8.4
 
 # ===== Testing =====
 pytest==8.3.4

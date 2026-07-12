@@ -47,6 +47,14 @@ firebase-credentials.json
 *.log
 logs/
 
+# ===== Tauri =====
+desktop/src-tauri/target/
+desktop/src-tauri/Cargo.lock
+
+# ===== Mobile =====
+mobile/.expo/
+mobile/dist/
+
 # ===== OS =====
 Thumbs.db
 ehthumbs.db
